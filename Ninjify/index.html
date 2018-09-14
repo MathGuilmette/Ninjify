@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TLM Ninjify</title>
+    <script src="https://unpkg.com/vue"></script>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="Styles/ninjifyCss.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="subBody">
+        <h2>TLM Ninjify</h2>
+
+        <div id="appInput" class="form-group">
+            <!-- NINJA INPUT-->
+            <label id="labelInsert" for="inputBuzzword">Insert words here</label><br />
+            <input type="text" id="inputBuzzword" class="form-control"/>
+            <input id="buttonReveal" type="button" v-on:click="submit();favoriteVisible = true;" value="Reveal your Ninja name" class="btn btn-success" /><br />
+            <!--NINJA LEVEL-->
+            <div id='radioNinjaLvl'>
+                <div class="radio">
+                    <label><input type="radio" id="recruit" value="Recruit" v-model="selected">Recruit</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" id="intermediate" value="Intermediate" v-model="selected">Intermediate</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" id="master" value="Master" v-model="selected">Master</label>
+                </div>
+            </div>
+            <!--NINJA NAME RESULT-->
+            <label id="labelNinjaName" for="result">{{selected}} {{ result.name }}</label>
+            <input type="button" v-if="favoriteVisible" id="buttonFavorite" v-on:click="favorite();favoriteExist=true;" value="Set as favorite" class="btn btn-primary"/>
+            <!--FAVORITE NINJA-->
+            <label id="labelFavoriteNinja" v-if="favoriteExist">Your favorite NinjaName is: {{favoriteName}}</label>
+        </div>
+    </div>
+    <!-- VUE.JS-->
+    <script src="Scripts/VueNinjify.js"></script>
+</body>
+</html>
